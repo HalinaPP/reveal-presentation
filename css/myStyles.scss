@@ -1,0 +1,22 @@
+$green-color : #a6e22e;
+.align-left{
+    text-align: left;
+    margin-left: 60px;
+    span{
+        color: $green-color;
+    }
+}
+.green{
+    color:$green-color;
+}
+.reveal ol
+pre{
+    width:100%;
+}
+
+.two-col{
+    display:flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+}

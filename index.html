@@ -19,24 +19,31 @@
 				<section  data-transition="slide-in fade-out " data-timing="10">
 					<h1>Canvas</h1>
 					<aside class="notes">
-						Canvas is a element of HTML5, which can be used for rendering graphs,
-						game graphics, or other visual images on the fly.
+						Canvas is a element of HTML5.
+						It's an amazing drawing technology built into all modern web browsers.
+						With Canvas you can draw shapes, graphics, manipulate photos, videos, build games on the fly
 					</aside>
 				</section>
-				<section data-markdown data-transition="slide-in fade-out " data-timing="10">
-					<textarea data-template>
-						## History
-						Canvas was initially introduced by Apple for use in their own
-						Mac OS X WebKit component in 2004.
+				<section data-transition="slide-in fade-out " >
+						<h2>History</h2>
+						<ul>
+							<li>was used by Apple in Safari and Dashboard in 2004</li>
+							<li class="fragment fade-up">in 2005 in version 1.8 of Gecko browsers</li>
+							<li class="fragment fade-up">in  Opera in 2006</li>
+							<li class="fragment fade-up"> part of the HTML 5 specification</li>
+						</ul>
+						<aside class="notes">
+							Firstly, I'll say some words about history.
 
-						Later, in 2005 it was adopted in version 1.8 of Gecko browsers,
-						and Opera in 2006, and standardized by
-						the Web Hypertext Application Technology Working Group.
-						Note: Firstly, I'll say some words about history.
-					</textarea>
+							Canvas was initially introduced by Apple for use in their own
+							Mac OS X WebKit component in 2004.
+
+							Later, in 2005 it was adopted in version 1.8 of Gecko browsers,
+							and Opera in 2006, and now it's a part of the HTML 5 specification .
+						</aside>
 				</section>
 				<section data-transition="slide-in fade-out ">
-					<h2>How to use Canvas</h2>
+					<h2>How to use Canvas API</h2>
 					<ol>
 						<li class="fragment fade-up">
 							Create the canvas element
@@ -53,6 +60,7 @@
 						<li class="fragment fade-up	">Use the context to draw</li>
 					</ol>
 					<aside class="notes">
+						Today I'm going to speach about Canvas API, which focuses on 2D graphics.
 						Firstly, we should include canvas tag-element in HTML. Set id, width and height attribute.
 						If a width or height is not specified,	the default width of 300 pixels and the default height of 150 pixels are used.
 						The "canvas" element is only a transparent container for graphics and has no border and no content.
@@ -77,7 +85,7 @@
 			</section>
 
 			<section data-transition="slide-in fade-out ">
-				<div>canvas.getContext(<span class="green">contextType</span>, contextAttributes)</div>
+				<div>canvas.getContext(<span class="green">contextType</span>)</div>
 				<ul>
 					<li>"2d"</li>
 					<li>"webgl" (or "experimental-webgl")</li>
@@ -85,26 +93,18 @@
 					<li>"bitmaprenderer"</li>
 				</ul>
 				<aside class="notes">
-					The first argument of the method is a string, defining type of context drawing.
+					The argument of the method is a string, defining type of context drawing.
 					Possible values are:
 				</aside>
 			</section>
 			<section data-transition="slide-in fade-out ">
-				<div>canvas.getContext(contextType, <span class="green">contextAttributes</span>)</div>
-				<div>See all of then in page</div>
-				<a href="https://developer.mozilla.org/en-US/docs/Web/API/HTMLCanvasElement/getContext">https://developer.mozilla.org/en-US/docs/Web/API/HTMLCanvasElement/getContext</a>
-				<aside class="notes">
-					The second argument of the method are several context attributes, more detals you can find by the next link.
-				</aside>
-			</section>
-	 		<section data-transition="slide-in fade-out ">
 				<h2>Coordinate space</h2>
 				<img src="./images/grid.png" width="300">
 				<aside class="notes">
 					Let's see the coordinate space.
-					 Normally 1 unit in the grid corresponds to 1 pixel on the canvas.
-					 The origin of this grid is positioned in the top left corner
-					 at coordinate (0,0).
+					The canvas is a two-dimensional grid.
+					Normally 1 unit in the grid corresponds to 1 pixel on the canvas.
+					The coordinate (0, 0) is at the upper-left corner of the canvas.
 					 So the position of the top left corner of the blue square becomes x pixels
 					 from the left and y pixels from the top, at coordinate (x,y).
 				</aside>
@@ -132,92 +132,6 @@
 					The first method draw fill rectangle, such as top red rectangle in the picture.
 					Next method draw outline of rectangle, middle shape in the picture.
 					All thease functions draw immediately to the canvas.
-				</aside>
-			</section>
-			<section data-transition="slide-in fade-out ">
-				<h2>Images</h2>
-				<p><span class="green">drawImage</span>(image, x, y)</p>
-				<pre><code>const image = document.getElementById('source');
-
-image.addEventListener('load', e => {
-  ctx.drawImage(image, 33, 71, 104, 124, 21, 20, 87, 104);
-});</code></pre>
-				<aside class="notes">
-					Next useful feature of "canvas" is the ability to use images.
-					To import image into a canvas :
-					 you should get a reference to an HTMLImageElement object
-						or use images by providing a URL.
-					And draw the image on the canvas using the drawImage() function.
-				</aside>
-			</section>
-			<section data-transition="slide-in fade-out ">
-				<h2>Patterns</h2>
-				<div class="two-col">
-					<div class="align-left">
-						<p class="green">createPattern(image, type)</p>
-						<p><span class="green">image</span> - CanvasImageSource,</p>
-						<p><span class="green">type</span> - how to use the image (repeat, repeat-x, repeat-y, no-repeat)</p>
-					</div>
-					<div>
-						<img src="./images/pattern.png" width="450">
-					</div>
-				</div>
-				<aside class="notes">
-					If you want to create a pattern of image, you should use createPattern method.
-					image is a CanvasImageSource, type - how to use the image (repeat or not)
-				</aside>
-			</section>
-			<section data-transition="slide-in fade-out ">
-				<h2>Path</h2>
-				<p>
-					A path is a list of points, lines and shapes of different width and of different color
-					 are connected and form a shape.
-				</p>
-			</section>
-			<section data-transition="slide-in fade-out ">
-				<h3>How to use path</h3>
-				<ol>
-					<li class="fragment fade-up">
-						Create the path
-						<div class="green">beginPath()</div>
-					</li>
-
-					<li class="fragment fade-up">
-						use drawing commands to draw into the path
-						<div><span class="green">moveTo()</span>, <span class="green">lineTo()</span>, <span class="green">arc()</span>, <span class="green">arcTo()</span>, <span class="green">rect()</span> and etc</div>
-					</li>
-					<li class="fragment fade-up">
-						stroke or fill the path
-						<div><span class="green">stroke()</span> - draws the shape by stroking its outline</div>
-						<div><span class="green">fill()</span> - draws a solid shape by filling the path's content area</div>
-					</li>
-					<li class="fragment fade-up">*
-						<span class="green">closePath()</span> - adds a straight line
-							to the path, going to the start of the current sub-path
-					</li>
-				</ol>
-				<aside class="notes">
-					ClosePath method tries to close the shape by drawing a straight line from the current point
-					to the start. It is an optional step, because when you call fill(),
-					any open shapes are closed automatically,
-				</aside>
-			</section>
-			<section data-transition="slide-in fade-out ">
-				<div class="align-left">
-					<div><span class="green">moveTo</span>(x, y)</div>
-					<div>Moves the pen to the coordinates specified by x and y</div>
-					<p></p>
-					<div><span class="green">lineTo</span>(x, y)</div>
-					<div>Draws a line from the current drawing position to the position specified by x and y</div>
-					<p></p>
-					<div><span class="green">rect</span>(x, y, width, height)</div>
-					<div>Draws a rectangle whose top-left corner is specified by (x, y)
-						with the specified width and height</div>
-				</div>
-				<aside class="notes">
-					During second step of creating path you can use next methods:
-					the moveTo() method is used to place the starting point to new position
-					or to draw unconnected paths.
 				</aside>
 			</section>
 			<section data-transition="slide-in fade-out ">
@@ -257,7 +171,8 @@ image.addEventListener('load', e => {
 					</div>
 				</div>
 				<aside class="notes">
-					For drawing text into the canvas, use next function.
+					Canvas can draw text as well.
+					For drawing it, use next function.
 					You can see in the picture examples of the fill and the stroke texts.
 				</aside>
 			</section>
@@ -315,7 +230,7 @@ ctx.strokeRect(10, 90, 50, 30)
 
 			<section data-transition="slide-in fade-out ">
 				<h2>Gradients</h2>
-				<div class="two-col">
+								<div class="two-col">
 					<div class="align-left">
 						<p><span class="green">createLinearGradient</span>(x1, y1, x2, y2)</p>
 						<p><span class="green">createRadialGradient</span>(x1, y1, r1, x2, y2, r2)</p>
@@ -340,14 +255,146 @@ ctx.fillRect(10, 10, 150, 80);
 				and after that set color parameters by using addColorStop method.
 			</aside>
 			</section>
+
 			<section data-transition="slide-in fade-out ">
-				<h2>Transformations</h2>
-				<p><span class="green">translate</span>(x, y)</p>
-				<p><span class="green">rotate</span>(angle)</p>
-				<p><span class="green">scale</span>(x, y)</p>
-				<p><span class="green">transform</span>(a, b, c, d, e, f)</p>
+				<h2>Images</h2>
+				<p><span class="green">drawImage</span>(image, x, y)</p>
+				<pre><code>const image = document.getElementById('source');
+
+image.addEventListener('load', e => {
+  ctx.drawImage(image, 33, 71, 104, 124, 21, 20, 87, 104);
+});</code></pre>
 				<aside class="notes">
-					Transformation methods are the similar to the css methods.
+					Next useful feature of "canvas" is the ability to use images.
+					To import image into a canvas :
+					 you should get a reference to an HTMLImageElement object
+						or use images by providing a URL.
+					And draw the image on the canvas using the drawImage() function.
+				</aside>
+			</section>
+			<section data-transition="slide-in fade-out ">
+				<h2>Patterns</h2>
+				<div class="two-col">
+					<div class="align-left">
+						<p class="green">createPattern(image, type)</p>
+						<p><span class="green">image</span> - CanvasImageSource,</p>
+						<p><span class="green">type</span> - how to use the image (repeat, repeat-x, repeat-y, no-repeat)</p>
+					</div>
+					<div>
+						<img src="./images/pattern.png" width="450">
+					</div>
+				</div>
+				<aside class="notes">
+					If you want to create a pattern of image, you should use createPattern method.
+					image is a CanvasImageSource, type - how to use the image (repeat or not)
+				</aside>
+			</section>
+			<section data-transition="slide-in fade-out ">
+				<h2>Path</h2>
+				<p>
+					A path is a list of points, lines and shapes of different width and of different color
+					 are connected and form a shape.
+				</p>
+				<aside class="notes">
+					If you want to draw more complex shapes, you should use paths.
+				</aside>
+			</section>
+			<section data-transition="slide-in fade-out ">
+				<h3>How to use path</h3>
+				<ol>
+					<li class="fragment fade-up">
+						Create the path
+						<div class="green">beginPath()</div>
+					</li>
+
+					<li class="fragment fade-up">
+						use drawing commands to draw into the path
+						<div><span class="green">moveTo()</span>, <span class="green">lineTo()</span>, <span class="green">arc()</span>, <span class="green">arcTo()</span>, <span class="green">rect()</span> and etc</div>
+					</li>
+					<li class="fragment fade-up">
+						stroke or fill the path
+						<div><span class="green">stroke()</span> - draws the shape by stroking its outline</div>
+						<div><span class="green">fill()</span> - draws a solid shape by filling the path's content area</div>
+					</li>
+					<li class="fragment fade-up">*
+						<span class="green">closePath()</span> - adds a straight line
+							to the path, going to the start of the current sub-path
+					</li>
+				</ol>
+				<aside class="notes">
+					ClosePath method tries to close the shape by drawing a straight line from the current point
+					to the start. It is an optional step, because when you call fill(),
+					any open shapes are closed automatically,
+				</aside>
+			</section>
+			<section data-transition="slide-in fade-out ">
+				<div class="align-left">
+					<div><span class="green">moveTo</span>(x, y)</div>
+					<div>Moves the pen to the coordinates specified by x and y</div>
+					<p></p>
+					<div><span class="green">lineTo</span>(x, y)</div>
+					<div>Draws a line from the current drawing position to the position specified by x and y</div>
+					<p></p>
+					<div><span class="green">rect</span>(x, y, width, height)</div>
+					<div>Draws a rectangle whose top-left corner is specified by (x, y)
+						with the specified width and height</div>
+				</div>
+				<aside class="notes">
+					During second step of creating path you can use next methods:
+					the moveTo() method is used to place the starting point to new position
+					or to draw unconnected paths.
+				</aside>
+			</section>
+			<section>
+				<h3>Clip</h3>
+				<canvas id="c3" width="400" height="200"></canvas>
+				<script>
+					const clipCanvas = document.getElementById('c3');
+					const ctxC = clipCanvas.getContext('2d');
+					ctxC.fillStyle = 'white';
+				ctxC.fillRect(0,0,400,200);
+				// draw rect the first time
+				ctxC.fillStyle = 'red';
+				ctxC.fillRect(0,0,400,100);
+
+				// create triangle path
+				ctxC.beginPath();
+				ctxC.moveTo(200,50);
+				ctxC.lineTo(250,150);
+				ctxC.lineTo(150,150);
+				ctxC.closePath();
+
+				// stroke the triangle so we can see it
+				ctxC.lineWidth = 10;
+				ctxC.stroke();
+
+				// use triangle as clip, 
+				ctxC.clip();
+				//fill rect in again with yellow
+				ctxC.fillStyle = 'yellow';
+				ctxC.fillRect(0,0,400,100);
+				</script>
+	<pre style="font-size:18px;width:500px;margin:0 auto;"> <code >
+	ctxC.fillStyle = 'white';
+	ctxC.fillRect(0,0,400,200);
+	ctxC.fillStyle = 'red';
+	ctxC.fillRect(0,0,400,100);
+	ctxC.beginPath();
+	//draw triangle
+	ctxC.closePath();
+	ctxC.lineWidth = 10;
+	ctxC.stroke();
+	ctxC.clip();
+	ctxC.fillStyle = 'yellow';
+	ctxC.fillRect(0,0,400,100);
+</code></pre>
+				<aside class="notes">
+					Sometimes you may want to draw just part of a shape.
+					You can do this with the clip function
+					This can be useful for when you want to create a complex graphic by
+					combining shapes,
+					or when you want to update just a part of the screen
+					for performance reasons.
 				</aside>
 			</section>
 			<section data-transition="slide-in fade-out ">
@@ -355,19 +402,136 @@ ctx.fillRect(10, 10, 150, 80);
 				<ol>
 					<li class="fragment fade-up">Clear the canvas</li>
 					<li class="fragment fade-up">Save the canvas state. Use save()</li>
-					<li class="fragment fade-up">Draw animated shapes</li>
+					<li class="fragment fade-up">Draw animated shapes, use requestAnimationFrame(callback)</li>
 					<li class="fragment fade-up">Restore the canvas state. Use restore()</li>
 				</ol>
+
 				<aside class="notes">
 					If we need to move or transform shape in the canvas container
 					 we have to redraw it.
-					 If we want to save current settings before animation, we have to use save().
+					 If we want to save current settings before animation,
+					 we have to use save().
 					 Draw new variant of the shape, you can use transformations.
+
 					 If we've saved the state, restore it before the next drawing.
 				</aside>
 			</section>
 			<section data-transition="slide-in fade-out ">
-				<h1>Thank you!</h1>
+				<h3>What else?</h3>
+				<ul>
+					<li>Shadows</li>
+					<li>Transformations(translate, rotate, scale, transform)</li>
+					<li>Pixel manipulation</li>
+					<li>Manipulation with video data</li>
+					<li>Image smoothing</li>
+					<li>Hit regions and accessibility</li>
+					<li>Using canvas in Webgl</li>
+				</ul>
+				<aside class="notes">
+					Transformation methods are the similar to the css methods.
+				</aside>
+			</section>
+			<section data-transition="slide-in fade-out ">
+				<h3>Libraries and frameworks</h3>
+				<ul>
+					<li>bHive.js</li>
+					<li>PaperJS</li>
+					<li>Fabric.js</li>
+					<li>CreateJS</li>
+					<li>PixiJS</li>
+					<li>PhaserJS</li>
+					<li>...</li>
+				</ul>
+			</section>
+			<section data-transition="slide-in fade-out ">
+						<h1>Examples</h1>
+			</section>
+			<section class="ex1-container" data-transition="slide-in fade-out ">
+				<p>
+					<a href="https://codepen.io/deanwagman/pen/EjLBdQ">https://codepen.io/deanwagman/pen/EjLBdQ</a>
+				</p>
+				<canvas id="ex1"></canvas>
+				<script  src='./js/weapon.js'></script>
+			</section>
+			<section class="ex2-container" data-transition="slide-in fade-out ">
+				<p><a href="https://codepen.io/towc/pen/VYbYvQ">https://codepen.io/towc/pen/VYbYvQ</a></p>
+				<canvas id=c></canvas>
+				<canvas id=bg></canvas>
+				<script  src="./js/rain.js"></script>
+			</section>
+			<section data-transition="slide-in fade-out ">
+				<h3>Pixel manipulation</h3>
+				<img src="./images/colors.jpg" id="source" width="400" >
+				<div>
+					<canvas id="ex3" width="400" height="300"></canvas>
+				</div>
+				 <script src="./js/createMono.js"></script>
+				 <aside class="notes">
+					As I said before canvas gives you direct access to the pixels
+					You can get the pixels for an entire canvas or just a portion,
+					manipulate those pixels, For example, cnahge colors to gray scale
+					and then set them back.
+					These manipulations lets you do all kinds of interesting effects without Photoshop.
+				</aside>
+			</section>
+			<section data-transition="slide-in fade-out ">
+				<h3 style="color:yellow">pros</h3>
+				<ul>
+					<li>perfect for dealing with many elements</li>
+					<li>pixel manipulations</li>
+					<li>has no DOM => realy fast => great for games</li>
+					<li>content can be updated at any time, new content can be drawn on old one</li>
+					<li>has a similar result on all platforms</li>
+				</ul>
+				<aside class="notes">
+					This allows you to animate thousands of objects without unnecessary workload,
+					which is ideal for games.
+				</aside>
+			</section>
+			<section data-transition="slide-in fade-out ">
+					<h3 style="color:red">cons</h3>
+					<ul>
+						<li>slow when drawing to large areas(high resolution)</li>
+						<li>more complex than html&css</li>
+						<li>does not scale well</li>
+						<li>canvas content is not exposed to accessibility tools </li>
+						<li>text elements are invisible to search engines</li>
+					</ul>
+
+			</section>
+			<section data-transition="slide-in fade-out ">
+				<canvas id="text-canvas" width="1000" height="500"></canvas>
+				<script>
+					const textCanvas = document.getElementById('text-canvas');
+					console.log('t=',textCanvas);
+					const thankYou = 'Thank you!';
+					const ctxT = textCanvas.getContext('2d');
+
+					let j = 0;
+					function animText(){
+
+					/*	setTimeout(function(){
+							window.requestAnimationFrame(animText);
+						}, 1000);*/
+						j = j>1000 ? 0 : j;
+						let colors = ['red', 'blue', 'white'];
+
+
+							var grd = ctxT.createLinearGradient(0, 0, 900, 200);
+							console.log('c=',colors[j%3]);
+							grd.addColorStop(0, colors[j%3]);
+							grd.addColorStop(0.7,  colors[(j+1)%3]);
+							grd.addColorStop(1,  colors[(j+2)%3]);
+							ctxT.fillStyle = grd;
+
+							ctxT.font = '150px serif';
+							ctxT.fillText(thankYou,10, 300);
+						j++;
+					}
+				//	setTimeout(function(){
+						animText();
+				//	}, 1000);
+				</script>
 				<aside class="notes">
 					In conclusion, I want to say than Canvas is a powerfull instrument
 					for creating 2D and 3D elements.
